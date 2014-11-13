@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.bookstats.mapper.UserMapper;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -33,42 +34,20 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 
-    @Bean
-    @Scope(value = "singleton")
-    public DataSource getDataSource() {
-        // Configure data source.
-        DriverManagerDataSource ds = new DriverManagerDataSource();
-        ds.setDriverClassName("org.h2.Driver");
-        ds.setUsername("tester");
-        ds.setPassword("secret");
-        ds.setUrl("jdbc:h2:mem;MODE=PostgreSQL");
+    // Грузим по-умолчанию созданный из конфига!
+    @Autowired
+    DataSource dataSource;
 
-        // Open connection to our database and create
-        // table tbl_users
-        try (Connection connection = ds.getConnection()) {
-
-            Statement statement = connection.createStatement();
-            String creatUsersSQL = "CREATE TABLE IF NOT EXISTS tbl_users ( "
-                    + "id serial PRIMARY KEY, "
-                    + "login varchar(100) UNIQUE NOT NULL, "
-                    + "created timestamp DEFAULT CURRENT_TIMESTAMP ); ";
-
-            statement.execute(creatUsersSQL);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return ds;
-    }
-
+    //
     @Bean
     public SqlSessionFactory getSqlSessionFactory() {
+        // Список файлов мапперов
         Resource[] resources = new Resource[] { new ClassPathResource(
                 new ClassPathResource(getMapperXMLPath(UserMapper.class)).getPath()) };
 
+        // Mybatis
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
-        factoryBean.setDataSource(getDataSource());
+        factoryBean.setDataSource(dataSource);
         factoryBean.setMapperLocations(resources);
 
         SqlSessionFactory sqlSessionFactory = null;

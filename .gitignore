@@ -2,3 +2,5 @@
 .gradle
 build
 BookStats.iml
+*.log
+logs
