@@ -10,15 +10,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 import java.io.File;
-import java.sql.Connection;
-import java.sql.Statement;
 
 /**
  * Created with IntelliJ IDEA.
@@ -38,7 +34,7 @@ public class Main {
     @Autowired
     DataSource dataSource;
 
-    //
+    // MyBatis init mappers list
     @Bean
     public SqlSessionFactory getSqlSessionFactory() {
         // Список файлов мапперов
