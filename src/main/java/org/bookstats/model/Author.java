@@ -19,6 +19,9 @@ public class Author {
     private String fullname;
     private String engname;
 
+    // TODO: add tags!
+    // TODO: add genres!
+
     public long getId() {
         return id;
     }

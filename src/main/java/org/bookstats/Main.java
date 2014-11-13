@@ -1,6 +1,7 @@
 package org.bookstats;
 
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.bookstats.mapper.AuthorMapper;
 import org.bookstats.mapper.UserMapper;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -38,8 +39,11 @@ public class Main {
     @Bean
     public SqlSessionFactory getSqlSessionFactory() {
         // Список файлов мапперов
-        Resource[] resources = new Resource[] { new ClassPathResource(
-                new ClassPathResource(getMapperXMLPath(UserMapper.class)).getPath()) };
+        Resource[] resources = new Resource[] {
+                new ClassPathResource(
+                        new ClassPathResource(getMapperXMLPath(UserMapper.class)).getPath()),
+                new ClassPathResource(
+                        new ClassPathResource(getMapperXMLPath(AuthorMapper.class)).getPath())};
 
         // Mybatis
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
@@ -61,6 +65,12 @@ public class Main {
         SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(
                 getSqlSessionFactory());
         return sessionTemplate.getMapper(UserMapper.class);
+    }
+    @Bean
+    public AuthorMapper getAuthorMapper() {
+        SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(
+                getSqlSessionFactory());
+        return sessionTemplate.getMapper(AuthorMapper.class);
     }
 
     // This method will returns path to MyBatis mapper.

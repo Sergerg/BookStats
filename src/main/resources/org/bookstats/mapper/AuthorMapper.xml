@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace='org.bookstats.mapper.AuthorMapper'>
+    <resultMap type='org.bookstats.model.Author' id='AuthorResult'>
+        <id property='id' column='id' />
+        <result property='created' column='created' />
+        <result property='nick' column='nick' />
+        <result property='family' column='family' />
+        <result property='name' column='name' />
+        <result property='fullname' column='fullname' />
+        <result property='engname' column='engname' />
+    </resultMap>
+
+    <insert id="addAuthor" parameterType="org.bookstats.model.Author" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+        INSERT INTO tbl_authors (nick, family, name, fullname, engname  ) <!-- , family, name, fullname, engname -->
+        VALUES (#{nick}, #{family}, #{name}, #{fullname}, #{engname}) <!--  -->
+    </insert>
+
+    <select id='getAllAuthors' useCache="false" resultMap='AuthorResult'>
+        SELECT id, created, nick, family, name, fullname, engname FROM tbl_authors
+    </select>
+</mapper>
