@@ -12,3 +12,12 @@ CREATE TABLE IF NOT EXISTS tbl_authors (
 			fullname varchar(100),
 			engname varchar(100)
 			);
+
+CREATE TABLE IF NOT EXISTS tbl_links (
+			id serial PRIMARY KEY,
+      created timestamp DEFAULT CURRENT_TIMESTAMP,
+			title varchar(100) UNIQUE NOT NULL,
+			url varchar(255),
+			note varchar(4096),
+			ban bool
+			);
