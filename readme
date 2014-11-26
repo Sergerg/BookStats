@@ -1,3 +1,10 @@
+Start:
+gradlew run
+open http://localhost:8080
+or one 'command':
+git clone https://github.com/Sergerg/BookStats.git & cd BookStats & gradlew run
+
+TODO`s:
 Каталог книг:
 везде id и created
 
