@@ -1,3 +1,8 @@
+Start:
+gradlew run
+open http://localhost:8080
+
+TODO`s:
 Каталог книг:
 везде id и created
 
