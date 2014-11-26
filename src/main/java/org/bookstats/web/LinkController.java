@@ -21,8 +21,12 @@ public class LinkController {
     private LinkMapper mapper;
 
     @RequestMapping(value = "/link/add")
-    public List createUser(@RequestParam("title") String title, @RequestParam(value = "url",required = false) String url) {
+    public List createUser(@RequestParam(value = "title", required = false) String title,
+                           @RequestParam(value = "url", required = true) String url) {
         Link link = new Link();
+        if (title == null || title == "") {
+            title = url;
+        }
         link.setTitle(title);
         link.setUrl(url);
         mapper.addLink(link);

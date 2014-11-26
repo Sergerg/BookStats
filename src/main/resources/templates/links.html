@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>jQuery UI Dialog - Modal form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/sunny/jquery-ui.css"/> <!-- smoothness -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="/resources/css/links.css"/>
+    <script src="/resources/js/links.js"/>
+</head>
+<body>
+
+<div id="dialog-form" title="Create new list">
+    <p class="validateTips">All form fields are required.!!!</p>
+
+    <form>
+        <fieldset>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" value="" class="text ui-widget-content ui-corner-all"/>
+            <label for="url">Url</label>
+            <input type="text" name="url" id="url" value="http://" class="text ui-widget-content ui-corner-all"/>
+            <label for="note">Note</label>
+            <input type="text" name="note" id="note" value="..." class="text ui-widget-content ui-corner-all"/>
+            <label for="ban">Ban</label>
+            <input type="checkbox" name="ban" id="ban"/>
+
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"/>
+        </fieldset>
+    </form>
+</div>
+
+
+<div id="links-contain" class="ui-widget">
+    <h1>Existing Users:</h1>
+    <table id="links" class="ui-widget ui-widget-content">
+        <thead>
+        <tr class="ui-widget-header ">
+            <th>Title</th>
+            <th>Url</th>
+            <th>Note</th>
+            <th>Ban</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="link : ${links}">
+            <td th:text="${link.title}">Title</td>
+            <td th:text="${link.url}">url</td>
+            <td th:text="${link.note}">...</td>
+            <td th:text="${link.ban}">false</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<button id="create-link">Create new links</button>
+
+
+</body>
+</html>
