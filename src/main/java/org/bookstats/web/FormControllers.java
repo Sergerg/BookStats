@@ -36,8 +36,6 @@ public class FormControllers {
     // Form for links
     @RequestMapping(value = "/links")
     public String links(Model model) {
-
-//        return mapper.getAllLinks();
         model.addAttribute("links", mapper.getAllLinks());
         return "links";
     }
