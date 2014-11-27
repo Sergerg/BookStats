@@ -1,5 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="templates/default">
 <head>
     <title>jQuery UI Dialog - Modal form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,7 +13,14 @@
     <link rel="stylesheet" href="/resources/css/links.css"/>
     <script src="/resources/js/links.js"/>
 </head>
+
+
+
+
+
 <body>
+
+<div layout:fragment="content">
 
 <div id="dialog-form" title="Create new list">
     <p class="validateTips">All form fields are required.!!!</p>
@@ -34,6 +43,7 @@
 </div>
 
 
+<!-- TODO Ajax fragments -->
 <div id="links-contain" class="ui-widget">
     <h1>Existing Links:</h1>
     <table id="links" class="ui-widget ui-widget-content">
@@ -51,6 +61,7 @@
             <td th:text="${link.url}">url</td>
             <td th:text="${link.note}">...</td>
             <td th:text="${link.ban}">false</td>
+            <td><input type="checkbox" th:field="${link.ban}" /></td>td>
         </tr>
         </tbody>
     </table>
@@ -58,5 +69,6 @@
 <button id="create-link">Create new links</button>
 
 
+</div>
 </body>
 </html>

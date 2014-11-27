@@ -1,12 +1,11 @@
 package org.bookstats.web;
 
+import org.bookstats.mapper.AuthorMapper;
 import org.bookstats.mapper.LinkMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,13 +30,22 @@ public class FormControllers {
 
 
     @Autowired
-    private LinkMapper mapper;
+    private LinkMapper linkMapper;
 
     // Form for links
     @RequestMapping(value = "/links")
     public String links(Model model) {
-        model.addAttribute("links", mapper.getAllLinks());
+        model.addAttribute("links", linkMapper.getAllLinks());
         return "links";
+    }
+
+    @Autowired
+    private AuthorMapper authorMapper;
+    // Form for authors
+    @RequestMapping(value = "/authors")
+    public String authors(Model model) {
+        model.addAttribute("authors", authorMapper.getAllAuthors());
+        return "authors";
     }
 
 }

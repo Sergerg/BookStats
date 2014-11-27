@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/sunny/jquery-ui.css"/> <!-- smoothness -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+</head>
+
+<body>
+<div th:replace="fragments/header :: header">
+    Header
+</div>
+<div th:replace="default :: content"> <!-- ${view} -->
+    Content
+</div>
+<div layout:fragment="content">
+</div>
+<div th:replace="fragments/footer :: footer">
+    Footer
+</div>
+</body>
+</html>
