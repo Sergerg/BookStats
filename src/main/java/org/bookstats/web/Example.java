@@ -14,6 +14,7 @@ public class Example {
 
     @RequestMapping("/")
     String home() {
-        return "Hello World1! <a href='/links.html'>go</a>";
+        return "Hello World1! <a href='/links.html'>go</a><br/>" +
+                "<a href='/books.html'>Site</a>";
     }
 }
