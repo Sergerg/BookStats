@@ -24,5 +24,6 @@ public class Book {
     //private List<Comments>;
     private String note;
     private List<Link> links;
+    private Cycle cycle;
 
 }

@@ -1,6 +1,7 @@
 package org.bookstats.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,6 +19,9 @@ public class Author {
     private String name;
     private String fullname;
     private String engname;
+    private User user;
+
+    private List<Cycle> cycles;
 
     // TODO: add tags!
     // TODO: add genres!
@@ -69,6 +73,20 @@ public class Author {
     }
     public void setEngname(String engname) {
         this.engname = engname;
+    }
+
+    public List<Cycle> getCycles() {
+        return cycles;
+    }
+    public void setCycles(List<Cycle> cycles) {
+        this.cycles = cycles;
+    }
+
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
