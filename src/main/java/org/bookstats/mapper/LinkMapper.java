@@ -11,6 +11,6 @@ import java.util.List;
  * Time: 9:30
  */
 public interface LinkMapper {
-    public void addLink(Link link);
-    public List getAllLinks();
+    void addLink(Link link);
+    List getAllLinks();
 }

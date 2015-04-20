@@ -11,6 +11,6 @@ import java.util.List;
  * Time: 11:48
  */
 public interface AuthorMapper {
-    public void addAuthor(Author author);
-    public List getAllAuthors();
+    void addAuthor(Author author);
+    List getAllAuthors();
 }

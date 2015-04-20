@@ -14,12 +14,12 @@ public interface UserMapper {
     /**
      * Adds user to database.
      */
-    public void addUser(User user);
+    void addUser(User user);
 
     /**
      * Gets all users from database.
      *
      * @return list of users, if no user exists returns empty list.
      */
-    public List getAllUsers();
+    List getAllUsers();
 }

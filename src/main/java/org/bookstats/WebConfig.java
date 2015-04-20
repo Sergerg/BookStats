@@ -15,6 +15,26 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class WebConfig extends WebMvcConfigurerAdapter {
 
+//    public ResourceBundleMessageSource messageSource() {
+//
+//        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//
+//        String[] strBaseNames = {
+//                "/resources/templates/main"
+////                "/WEB-INF/messages/global/GlobalResources",
+////                "/WEB-INF/messages/user/UserResources",
+//        };
+//
+//        messageSource.setUseCodeAsDefaultMessage(true);
+//        messageSource.setDefaultEncoding("UTF-8");
+//
+//        // # -1 : never reload, 0 always reload
+//        messageSource.setCacheSeconds(0);
+//        messageSource.setBasenames(strBaseNames);
+//
+//        return messageSource;
+//    }
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**")
